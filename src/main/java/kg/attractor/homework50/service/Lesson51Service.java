@@ -75,7 +75,8 @@ public class Lesson51Service {
     }
 
     public User getUserByAccountName(String accountName){
-        return userDao.
+        return userDao.getByAccoutName(accountName);
+
     }
 
 
