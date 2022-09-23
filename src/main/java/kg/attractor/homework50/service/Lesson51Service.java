@@ -69,7 +69,6 @@ public class Lesson51Service {
         return userDao.getAllUsers();
     }
 
-
     public User getUsersByName(String name){
         return userDao.getByName(name);
     }
@@ -78,8 +77,8 @@ public class Lesson51Service {
         return userDao.getByAccountName(accountName);
     }
 
-
-
-
+    public User getUserByEmail(String email){
+        return userDao.getByEmail(email);
+    }
 
 }

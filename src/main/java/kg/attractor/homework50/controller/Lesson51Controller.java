@@ -50,8 +50,14 @@ public class Lesson51Controller {
     @GetMapping("/get/{accountName}")
     public  ResponseEntity<User> getUserByAccount(@PathVariable String accountName) {
         return new ResponseEntity<>(service.getUserByAccountName(accountName), HttpStatus.OK);
-
     }
+
+
+    @GetMapping("/get/{email}")
+    public  ResponseEntity<User> getUserByEmail(@PathVariable String email) {
+        return new ResponseEntity<>(service.getUserByEmail(email), HttpStatus.OK);
+    }
+
 
 
 
