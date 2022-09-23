@@ -27,4 +27,13 @@ public class UserDao {
                 "where name =?; ";
         return jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(User.class), name);
     }
+
+
+    public User getByAccountName(String accountName){
+        String ssql = "select*\n" +
+                "from users\n" +
+                "where accountName =?; ";
+        return jdbcTemplate.queryForObject(ssql, new BeanPropertyRowMapper<>(User.class), accountName);
+
+    }
 }

@@ -47,6 +47,13 @@ public class Lesson51Controller {
 
     }
 
+    @GetMapping("/get/{accountName}")
+    public  ResponseEntity<User> getUserByAccount(@PathVariable String accountName) {
+        return new ResponseEntity<>(service.getUserByAccountName(accountName), HttpStatus.OK);
+
+    }
+
+
 
 
 
