@@ -7,13 +7,12 @@ import kg.attractor.homework50.service.Lesson51Service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController("/")
+@RestController
+@RequestMapping("/database")
 @RequiredArgsConstructor
 public class Lesson51Controller {
     private final DBService dbService;
@@ -41,22 +40,25 @@ public class Lesson51Controller {
 
     }
 
-    @GetMapping("/get/{name}")
-    public  ResponseEntity<User> getUser(@PathVariable String name) {
+    @GetMapping("/go/{name}")
+    public  ResponseEntity<User> go (@PathVariable String name) {             //поиск по имени
         return new ResponseEntity<>(service.getUsersByName(name), HttpStatus.OK);
-
     }
-
-    @GetMapping("/get/{accountName}")
-    public  ResponseEntity<User> getUserByAccount(@PathVariable String accountName) {
-        return new ResponseEntity<>(service.getUserByAccountName(accountName), HttpStatus.OK);
+    @GetMapping("/ac/{account_name}")
+    public  ResponseEntity<User> account(@PathVariable String account_name){
+        return new ResponseEntity<>(service.getUserByAccount(account_name), HttpStatus.OK);
     }
 
 
     @GetMapping("/get/{email}")
-    public  ResponseEntity<User> getUserByEmail(@PathVariable String email) {
+    public  ResponseEntity <User> getUserByEmail( @PathVariable String email) {
         return new ResponseEntity<>(service.getUserByEmail(email), HttpStatus.OK);
     }
+
+
+
+
+
 
 
 

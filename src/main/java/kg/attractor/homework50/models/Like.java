@@ -1,24 +1,22 @@
 package kg.attractor.homework50.models;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.format.DateTimeFormatter;
 
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 
 public class Like {
 
-    private String userAccountName;
-
-    private String markName;
-
+    private int id;
+    private User userName;
+    private Post markName;
     private DateTimeFormatter markDateTime;
 
-    public Like(String userAccountName, String markName, DateTimeFormatter markDateTime) {
-        this.userAccountName = userAccountName;
-        this.markName = markName;
-        this.markDateTime = markDateTime;
-    }
 }

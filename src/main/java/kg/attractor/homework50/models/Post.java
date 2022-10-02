@@ -1,23 +1,27 @@
 package kg.attractor.homework50.models;
 
+import jdk.jshell.Snippet;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Subscription {
+
+public class Post {
 
     private int id;
-    private  User signAccountName;
-    private  User signingUpFor;
-    private LocalDate eventDate;
+    private String link;
+    private String description;
+    private LocalDateTime publicationDateTime;
+    private User user;
+
 
 
 }
