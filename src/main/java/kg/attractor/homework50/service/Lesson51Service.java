@@ -2,16 +2,20 @@ package kg.attractor.homework50.service;
 
 import kg.attractor.homework50.dao.PostDao;
 import kg.attractor.homework50.dao.UserDao;
+import kg.attractor.homework50.dto.PostDto;
 import kg.attractor.homework50.models.Post;
 import kg.attractor.homework50.models.User;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Service;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -83,7 +87,7 @@ public class Lesson51Service {
     }
 
 
-    public Post deletePostById (Long id){
+    public Post deletePostById (int id){
         return postDao.deletePost(id);
     }
 
@@ -94,14 +98,17 @@ public class Lesson51Service {
 
 
 
-
-
-//    public int createPost(PostDto post){
-//        return postDao.createPost(Post.builder()
-//                .id(post.getId()))
+//    public ResponseEntity<?> createPost (int id, String link, String description, PostDto post) {
+//        return new ResponseEntity<>(PostDto.builder()
+//                .id(post.getId())
 //                .link(post.getLink())
 //                .description(post.getDescription())
-//                .build(););
+//                .email(UserDto.builder()
+//                .publicationDateTime(post. getPublicationDateTime())
+//                .build(),
+//                HttpStatus.OK);
 //    }
+
+
 
 }

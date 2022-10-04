@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 
 import java.sql.PreparedStatement;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.Objects;
 @Component
 @AllArgsConstructor
@@ -25,10 +26,10 @@ public class PostDao {
 
         jdbcTemplate.update(conn->{
             PreparedStatement ps=conn.prepareStatement(sql, new String[]{"id"});
-            ps.setInt(1, post.getId());
+            ps.setInt(1,post.getId());
             ps.setString(2, post.getLink());
             ps.setString(3, post.getDescription());
-            ps.setTimestamp(4, Timestamp.valueOf(post.getPublicationDateTime()));
+            ps.setTimestamp(4, Timestamp.valueOf(LocalDateTime.now()));
             ps.setObject(5, post.getUser());
             return ps;
 
@@ -36,7 +37,7 @@ public class PostDao {
         return Objects.requireNonNull(keyHolder.getKey()).intValue();
     }
 
-    public Post deletePost(Long id) {
+    public Post deletePost(int id) {
         String sql = "delete from posts " +
                 "where id = ?; ";
         return jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Post.class), id);

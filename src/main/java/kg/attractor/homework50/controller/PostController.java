@@ -16,16 +16,20 @@ public class PostController {
     private final Lesson51Service service;
 
     @GetMapping("/post/{email}")
-    public ResponseEntity<Post> getPostByUser(@PathVariable String email) {
+    public ResponseEntity<Post> getPostByUser(@PathVariable String email) {  //поиск публикации
         return new ResponseEntity<>(service.findPost(email), HttpStatus.OK);
     }
 
     @DeleteMapping ("/delete/{id}")
-    public Post deletePost(@RequestParam Long id) {  //удаление подписки через идентификатор и почту
+    public Post deletePost(@RequestParam int id) {  //удаление подписки через идентификатор и почту
         return service.deletePostById(id);
+
     }
 
-
+//    @PostMapping("/create")
+//    public ResponseEntity<?> createPost (@RequestParam Long eventId, @RequestParam String email){
+//        return subscribeService.createASubscription(eventId, email);
+//    }
 
 
 }
