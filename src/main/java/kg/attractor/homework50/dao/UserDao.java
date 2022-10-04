@@ -41,13 +41,6 @@ public class UserDao {
     }
 
 
-    public User getByAccount(String account_name) {
-        String sql1 = "select*\n" +
-                "from users\n" +
-                "where account_name =?; ";
-        return jdbcTemplate.queryForObject(sql1, new BeanPropertyRowMapper<>(User.class), account_name);
-    }
-
     public User getByEmail(String email) {
         String sql3 = "select*\n" +
                 "from users\n" +

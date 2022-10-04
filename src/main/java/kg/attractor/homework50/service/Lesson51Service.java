@@ -78,18 +78,21 @@ public class Lesson51Service {
 
     }
 
-    public User getUserByAccount(String accountName) {
-            return userDao.getByAccount(accountName);
-    }
-
-
     public User getUserByEmail(String email){
         return userDao.getByEmail(email);
     }
 
-//    public Post getALLByUser(String email){
-//        return postDao.getPostByUser(email);
-//    }
+
+    public Post deletePostById (Long id){
+        return postDao.deletePost(id);
+    }
+
+
+    public Post findPost (String email){
+        return postDao.getPostByUser(email);
+    }
+
+
 
 
 

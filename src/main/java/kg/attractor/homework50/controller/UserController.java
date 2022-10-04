@@ -14,7 +14,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/database")
 @RequiredArgsConstructor
-public class Lesson51Controller {
+public class UserController {
     private final DBService dbService;
     private final Lesson51Service service;
 
@@ -44,21 +44,12 @@ public class Lesson51Controller {
     public  ResponseEntity<User> go (@PathVariable String name) {             //поиск по имени
         return new ResponseEntity<>(service.getUsersByName(name), HttpStatus.OK);
     }
-    @GetMapping("/ac/{account_name}")
-    public  ResponseEntity<User> account(@PathVariable String account_name){
-        return new ResponseEntity<>(service.getUserByAccount(account_name), HttpStatus.OK);
-    }
 
 
     @GetMapping("/get/{email}")
     public  ResponseEntity <User> getUserByEmail( @PathVariable String email) {
         return new ResponseEntity<>(service.getUserByEmail(email), HttpStatus.OK);
     }
-
-
-
-
-
 
 
 

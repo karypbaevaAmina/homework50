@@ -1,7 +1,6 @@
 package kg.attractor.homework50.dao;
 
 import kg.attractor.homework50.models.Post;
-import kg.attractor.homework50.models.User;
 import lombok.AllArgsConstructor;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -18,7 +17,7 @@ public class PostDao {
 
     private final JdbcTemplate jdbcTemplate;
 
-    public int createPost(Post post){
+    public int save (Post post){
         String sql = "insert into post" +
                 "values (?,?,?,?,?);";
 
@@ -35,15 +34,21 @@ public class PostDao {
 
         }, keyHolder);
         return Objects.requireNonNull(keyHolder.getKey()).intValue();
-
     }
 
-//    public Post getPostByUser(String email) {
-//        String sql3 = "select* \n" +
-//                "from posts \n" +
-//                "where user =?; ";
-//        return jdbcTemplate.queryForObject(sql3, new BeanPropertyRowMapper<>(Post.class), email);
-//    }
+    public Post deletePost(Long id) {
+        String sql = "delete from posts " +
+                "where id = ?; ";
+        return jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Post.class), id);
+    }
+
+    public Post getPostByUser(String email) {
+        String sql3 = "select*\n" +
+                "from posts\n" +
+                "where email = ?; ";
+        return jdbcTemplate.queryForObject(sql3, new BeanPropertyRowMapper<>(Post.class), email);
+    }
+
 
 
 
