@@ -10,7 +10,6 @@ import org.springframework.context.annotation.Configuration;
 public class SwaggerConfig {
     @Bean
     public OpenAPI customOpenAPI() {
-        System.out.println("!!!!!!!!!!!!!!!!!!!!!test!!!!!!!!!!!!!!!!!!!!!");
         return new OpenAPI()
                 .info(
                         new Info()

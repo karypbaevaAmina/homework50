@@ -1,0 +1,114 @@
+.splash {
+    cursor: pointer;
+    position: fixed;
+    padding-top: 30px;
+    top: 30%;
+    left: 50%;
+    height: 50%;
+    width: 60%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0);
+
+}
+
+.btn-lg {
+    height: 20%;
+    margin-left: 40%;
+    margin-top: 18%;
+
+    color: rgb(92, 88, 88);
+
+    font-size: 45px;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.container2{
+    max-width: 800px;
+    margin: 0  auto;
+    padding: 0 15px;
+
+}
+
+
+.likes_button{
+    background-color: transparent;
+    position: fixed;
+}
+
+.silver_b {
+    color:silver;
+}
+
+.btn2{
+    position: absolute;
+    width: 5%;
+    max-width: 500px;
+    top:180px;
+    left:40%;
+    background-color: transparent;
+    border-color: silver;
+    position: fixed;
+
+}
+
+.btn3 {
+    position: absolute;
+    width: 5%;
+    max-width: 500px;
+    top: 180px;
+    left: 40%;
+    background-color: transparent;
+    border-color: red;
+
+}
+
+.red{
+    padding-top: 20px;
+
+}
+
+.ul1 {
+    list-style-type: none;
+}
+.ul1 li {
+    float: left;
+}
+
+ul{
+    list-style-type: none;
+}
+
+.book2 {
+    padding-left: 390px;
+    color: silver;
+}
+
+.muted1{
+    padding-left: 390px;
+}
+
+.post1{
+    padding-bottom: 10px;
+}
+.name{
+    color: red;
+}
+
+.comment{
+    color: red;
+}
+
+.btn-secondary{
+    width: 245px;
+}
+.text{
+    width: 245px;
+}
+
+
+

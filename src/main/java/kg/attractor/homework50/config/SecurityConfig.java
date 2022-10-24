@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -25,23 +26,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter  {
         return new BCryptPasswordEncoder();
     }
 
-//    @Override
-//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//
-//        auth.inMemoryAuthentication()
-//                .withUser("admin")
-//                .password(passwordEncoder().encode("qwe"))
-//                .roles("EDITOR")
-//                .authorities("FULL")
-//                .and()
-//                .withUser("user")
-//                .password(passwordEncoder().encode("asd"))
-//                .roles("GUEST")
-//                .authorities("READ_ONLY", "READ_POSTS", "READ_COMMENTS","WRITE_COMMENTS" );
-//
-//    }
-
-
     private final  DataSource dataSource;
 
     @Autowired
@@ -52,16 +36,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter  {
                 .usersByUsernameQuery("select email, password, enabled"
                         + "from users "
                         + "where email = ?")
-                .authoritiesByUsernameQuery("select username,authority "
-                        + "from authorities "
-                        + "where username = ?");
+                .authoritiesByUsernameQuery("select u.username, a.authority " +
+                        "from authorities a " +
+                        "inner join users u on a.user_id = u.id " +
+                        "where username = ?");
     }
 
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/posts/**") // posts/add/qwe@qwe.com
+                .antMatchers( HttpMethod.POST,"/database**/")
                 .fullyAuthenticated();
 
         http.authorizeRequests()

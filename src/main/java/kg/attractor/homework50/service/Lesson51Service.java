@@ -3,6 +3,7 @@ package kg.attractor.homework50.service;
 import kg.attractor.homework50.dao.PostDao;
 import kg.attractor.homework50.dao.UserDao;
 import kg.attractor.homework50.dto.PostDto;
+import kg.attractor.homework50.dto.UserDto;
 import kg.attractor.homework50.models.Post;
 import kg.attractor.homework50.models.User;
 import lombok.RequiredArgsConstructor;
@@ -24,7 +25,6 @@ public class Lesson51Service {
 
     private final DBService dbService;
     private final UserDao userDao;
-    private final PostDao postDao;
 
 
     private int executeUpdate(String query) throws SQLException {
@@ -86,28 +86,6 @@ public class Lesson51Service {
         return userDao.getByEmail(email);
     }
 
-
-    public Post deletePostById (int id){
-        return postDao.deletePost(id);
-    }
-
-
-    public Post findPost (String email){
-        return postDao.getPostByUser(email);
-    }
-
-
-
-//    public ResponseEntity<?> createPost (int id, String link, String description, PostDto post) {
-//        return new ResponseEntity<>(PostDto.builder()
-//                .id(post.getId())
-//                .link(post.getLink())
-//                .description(post.getDescription())
-//                .email(UserDto.builder()
-//                .publicationDateTime(post. getPublicationDateTime())
-//                .build(),
-//                HttpStatus.OK);
-//    }
 
 
 

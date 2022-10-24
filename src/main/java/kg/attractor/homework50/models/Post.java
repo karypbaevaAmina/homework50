@@ -14,10 +14,10 @@ import java.time.LocalDateTime;
 public class Post {
 
     private int id;
-    private String link;
+    private String image;
     private String description;
     private LocalDateTime publicationDateTime;
-    private User user;
+    private int user;
 
 
 
