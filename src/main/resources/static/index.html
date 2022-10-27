@@ -12,14 +12,32 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
 <div id="base" class="container like">
+    <form id="post-form" class="container2">
+
+        <div class="card" style="width: 18rem;">
+            <div class="card-header">
+                Добавление нового поста:
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"> <input type="file" name="image"/></li>
+                <li class="list-group-item"> <textarea class="text"  name="description" placeholder="Описание поста"></textarea></li>
+                <li class="list-group-item"> <button type="submit" class="btn btn-secondary">Отправить</button></li>
+<!--                <button type="submit" id="get_posts">GET POSTS</button>-->
+            </ul>
+        </div>
+
+    </form>
     <div class="card post active post1"> Posts: </div>
     <div class="card active">Comments:</div>
 
-<div class="splash">
-    <button type="button" class="btn btn-secondary btn-lg">Войти</button>
-</div>
-<script src="script.js"></script>
+
+<!--<div class="splash" >-->
+<!--    <button type="button" class="btn btn-secondary btn-lg">Войти</button>-->
+<!--</div>-->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="script.js"></script>
 </div>
 </body>
 </html>

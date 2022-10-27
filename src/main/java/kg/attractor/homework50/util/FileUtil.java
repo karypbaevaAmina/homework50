@@ -7,11 +7,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class FileUtil {
-    private static final String postsDir = "src/main/resources/static/";
+    private static final String postsDir = "src/main/resources/static/images/" ;
 
-    public static String createFileFromMultipartFile(MultipartFile multipartFile) {
+    public static String createFileFromMultipartFile(MultipartFile multipartFile, String description) {
         byte[] data = getBytesFromMultipartFile(multipartFile);
-        String name = String.format("posts_%s_%s.jpg");
+        String name = String.format("posts_%s.jpg", "post_" + description);
         File file = new File(postsDir + name);
         try(FileOutputStream fos = new FileOutputStream(file)) {
             fos.write(data);

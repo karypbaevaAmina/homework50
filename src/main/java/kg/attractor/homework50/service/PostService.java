@@ -6,11 +6,15 @@ import kg.attractor.homework50.models.Post;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.Resource;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.webjars.NotFoundException;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -19,33 +23,14 @@ public class PostService {
     private final PostDao postDao;
 
 
-    public PostImageDto addImage(MultipartFile file, String description) {
-        byte[] data = new byte[0];
-        try {
-            data = file.getBytes();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        if (data.length == 0) {
-            // TODO return no content or something or throw exception
-            //  which will be processed on controller layer
-        }
-
-        PostImageDto image = PostImageDto
-                .builder()
-                .posterData(data)
-                .description(description)
-                .build();
-
-        var savedPostId = postDao.save(image);
-
-        return PostImageDto.builder()
-                .id(savedPostId)
-                .description(description)
-                .posterData(data)
-                .build();
-
+    public Optional<?> createPost(MultipartFile image, String description) {
+        return Optional.of(postDao.save(
+                        PostImageDto.builder()
+                                .image(image)
+                                .description(description)
+                                .build()
+                )
+        );
     }
 
 
@@ -59,9 +44,11 @@ public class PostService {
     }
 
 
-    public Resource getById(Long id) {
-        PostImageDto postImage = postDao.findById(id)
-                .orElseThrow(() -> new NotFoundException("Image with " + id + " doesn't exists!"));
-        return new ByteArrayResource(postImage.getPosterData());
-    }
+
+
+
+
+
+
+
 }

@@ -11,12 +11,12 @@ import lombok.Setter;
 public class PostImage {
     private Long id;
     private String name;
-
-    @JsonProperty("poster_data")
-    private byte[] posterData;
+    private String image;
 
 
-    public PostImage generateNoImage(){
-        return PostImage.builder().name("-no-image").build();
+    public PostImage(Long id, String name, String image) {
+        this.id = id;
+        this.name = name;
+        this.image = image;
     }
 }

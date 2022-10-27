@@ -8,15 +8,9 @@ import lombok.AllArgsConstructor;
 import org.springframework.dao.support.DataAccessUtils;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.support.GeneratedKeyHolder;
-import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Component;
 
-import java.sql.PreparedStatement;
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 @Component
@@ -42,28 +36,43 @@ public class PostDao {
         return jdbcTemplate.queryForObject(sql3, new BeanPropertyRowMapper<>(Post.class), email);
     }
 
-    public Optional<PostImageDto> findById(Long id) {
+
+
+    public List<PostImageDto> findAll() {
+        String sql5 = "select * " +
+                "from post_image ";
+        return (List<PostImageDto>) jdbcTemplate.queryForObject(sql5, new BeanPropertyRowMapper<>(PostImageDto.class));
+    }
+
+
+
+    public PostDto save(PostImageDto image) {
+        String sql = "insert into post_image(image, description ) " +
+                "values(?,?)";
+        String fileName = FileUtil.createFileFromMultipartFile(
+                image.getImage(),
+                image.getDescription());
+
+
+        jdbcTemplate.update(sql, fileName, image.getDescription());
+
+        return PostDto.builder()
+                .image(fileName)
+                .description(image.getDescription())
+                .build();
+    }
+
+    public Optional<PostImageDto> findByName(String image) {
         String sql = "select * " +
-                "from posts " +
-                "where id = ?";
+                "from post_image " +
+                "where image = ?";
         return Optional.ofNullable(DataAccessUtils.singleResult(
-                jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(PostImageDto.class), id)
+                jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(PostImageDto.class), image)
         ));
     }
 
 
 
-    public Long save(PostImageDto image) {
-        String sql = "insert into post_image(image, description ) " +
-                "values(?,?)";
-        KeyHolder keyHolder = new GeneratedKeyHolder();
-        jdbcTemplate.update(con -> {
-            PreparedStatement ps = con.prepareStatement(sql, new String[]{"id"});
-            ps.setString(2, image.getDescription());
-            ps.setBytes(1, image.getPosterData());
-            return ps;
-        }, keyHolder);
-        return keyHolder.getKey().longValue();
-    }
+
 }
 

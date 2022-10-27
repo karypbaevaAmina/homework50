@@ -1,16 +1,16 @@
 package kg.attractor.homework50.controller;
 
+import kg.attractor.homework50.dao.PostDao;
 import kg.attractor.homework50.dto.PostImageDto;
-import kg.attractor.homework50.models.Post;
 import kg.attractor.homework50.service.PostService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.core.io.Resource;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
+
 
 
 @RestController
@@ -19,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class PostController {
 
     private final PostService postService;
+    private final PostDao postDao;
 
  //***************** не нужный код ********////////
 //
@@ -32,27 +33,28 @@ public class PostController {
 //        return postService.deletePostById(id);
 //
 //    }
-
     ////////********************************************/////////////
 
-    @PostMapping()
+    @PostMapping
 
     /* Пост отправляется в виде form_data
             image   ->   (файл)
             description  ->  (текст)
      */
-    public PostImageDto addPost(@RequestPart MultipartFile file, @RequestPart String description) {
-        return postService.addImage(file, description);
+    public ResponseEntity<?> addPost(@RequestPart MultipartFile image, @RequestPart String description) {
+        var post = postService.createPost(image, description);
+        return post.isPresent()?
+                new ResponseEntity<>(post.get(), HttpStatus.OK):
+                new ResponseEntity<>("Вы должны войти в аккаунт, чтобы добавить пост!", HttpStatus.CONFLICT);
     }
 
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Resource> serverFile(@PathVariable Long id) {
-        Resource resource = postService.getById(id);
-        return ResponseEntity.ok()
-                .header(HttpHeaders.CONTENT_TYPE, MediaType.IMAGE_JPEG_VALUE)
-                .body(resource);
+    @PostMapping("/post/{image}")
+    public ResponseEntity<?> getImageDetails(@PathVariable (value = "image") String image) {
+        return new ResponseEntity<>(postDao.findByName(image), HttpStatus.OK);
+
     }
+
 
 
 

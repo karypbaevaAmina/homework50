@@ -16,8 +16,6 @@ public class Comment {
     private int id;
     private String text;
     private LocalDateTime commentDate;
-    private User user;
-    private Post post;
 
 }
 
