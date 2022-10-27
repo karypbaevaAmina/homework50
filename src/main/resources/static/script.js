@@ -1,5 +1,5 @@
 "use strict"
-const BASE_URL = "http://localhost:9678"
+const BASE_URL = "http://localhost:9787"
 
 document.getElementById("post-form",)
     .addEventListener("submit", sendPost);
@@ -25,7 +25,7 @@ function send(path, formData) {
     axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
     axios.post(BASE_URL+path, formData)
         .then((response)=>{
-            console.log(response.data);
+            // console.log(response.data);
             let postElement = createPostElement(response.data);
             addPost(postElement);
         })
@@ -33,20 +33,6 @@ function send(path, formData) {
             alert(error);
         })
 }
-
-document.getElementById("get_posts").addEventListener("click", getPosts)
-
-function getPosts(event) {
-    axios.get(BASE_URL+'/post')
-        .then(function (response) {
-            console.log(response.data);
-        })
-        .catch(function (error) {
-            console.log(error);
-        })
-}
-
-
 
 
 let comment = {
@@ -72,10 +58,11 @@ function createCommentElement(comment) {   //  добавляет коммент
 
 
 function createPostElement(post) { //  добавляет пост
+
     let ul =`
         <div id="like2" style="position: relative;">
             <div>New publication: </div>
-            <img class ="block w-30" src = "..static/images/${post.image}" alt= "Post Image">
+            <img class ="block w-30" src ="images/${post.image}" alt= "Post Image">
             <div> Description of post: ${post.description}</div>
             <div style="position: absolute;top: 180px; right: 650px;">
                 <span hidden class="h1 mx-2 text-danger icon">
@@ -118,7 +105,7 @@ function addPost(postElem) {
 
 
 const likeBook = document.getElementById('bookmark');
-// likeBook.addEventListener('click', bookMark);
+likeBook.addEventListener('click', bookMark);
 
 
 function bookMark(event) {
