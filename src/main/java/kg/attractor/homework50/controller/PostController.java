@@ -49,15 +49,11 @@ public class PostController {
     }
 
 
+
     @PostMapping("/post/{image}")
     public ResponseEntity<?> getImageDetails(@PathVariable (value = "image") String image) {
         return new ResponseEntity<>(postDao.findByName(image), HttpStatus.OK);
 
     }
-
-
-
-
-
 
 }

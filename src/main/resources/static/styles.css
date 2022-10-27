@@ -110,9 +110,12 @@ ul{
 .text{
     width: 245px;
 }
+.comment-1{
+    margin-top: 30px;
+    font-weight: bold;
+}
 
 /****************************************/
-
 body {
     margin: 0;
     padding: 0;
@@ -123,7 +126,7 @@ body {
 #prompt-form {
     display: inline-block;
     padding: 5px 5px 5px 70px;
-    width: 270px;
+    width: 200px;
     border: 1px solid black;
     background: white url(https://en.js.cx/clipart/prompt.png) no-repeat left 5px;
     vertical-align: middle;
