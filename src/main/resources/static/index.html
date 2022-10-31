@@ -11,11 +11,37 @@
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="bod">
+
+<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;"> Регистрация </button>
+
+<div id="id01" class="modal">
+    <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Закрыть Modal">&times;</span>
+    <form id="registration-form" class="modal-content" >
+        <div class="container">
+            <h1>Регистрация</h1>
+            <p>Please fill in this form to create an account.</p>
+            <hr>
+            <label><b>Имя пользователя</b></label>
+            <input type="text" placeholder=" Ведите Имя" name="name">
+
+            <label ><b>Email</b></label>
+            <input type="text" placeholder=" Ведите Email" name="email" required>
+
+            <label><b>Пароль</b></label>
+            <input type="password" placeholder=" Ведите пароль" name="password" required>
+
+            <div class="clearfix">
+                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Отменить</button>
+                <button type="submit" id="submit" class="signupbtn">Зарегистрироваться</button>
+            </div>
+        </div>
+    </form>
+</div>
+
 
 <div id="base" class="container like">
     <form id="post-form" class="container2">
-
         <div class="card" style="width: 18rem;">
             <div class="card-header">
                 Добавление нового поста:
@@ -24,16 +50,14 @@
                 <li class="list-group-item"> <input type="file" name="image"/></li>
                 <li class="list-group-item"> <textarea class="text"  name="description" placeholder="Описание поста"></textarea></li>
                 <li class="list-group-item"> <button type="submit" class="btn btn-secondary">Отправить</button></li>
-<!--                <button type="submit" id="get_posts">GET POSTS</button>-->
             </ul>
         </div>
     </form>
-    <div class="card post active post1"> Posts: </div>
-    <div class="card active">Comments:</div>
 
-<!--<div class="splash" >-->
-<!--    <button type="button" class="btn btn-secondary btn-lg">Войти</button>-->
-<!--</div>-->
+    <div class="card post active post1"> Posts: </div>
+<!--    <div class="card active">Comments:</div>-->
+
+
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script language="JavaScript" src="script.js"></script>
 </div>

@@ -41,8 +41,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter  {
                         "inner join users u on a.user = u.email" +
                         "where email = ?");
     }
-
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
