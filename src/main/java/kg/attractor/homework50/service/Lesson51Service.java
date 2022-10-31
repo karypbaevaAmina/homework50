@@ -87,6 +87,20 @@ public class Lesson51Service {
     }
 
 
+    public String createNewUser(UserDto userDto) {
+        if (userDto.getName() == null)
+            return "Пустое имя пользователя!";
+        if (userDto.getEmail() == null)
+            return "Нету электронной почты!";
+        if (userDto.getPassword() == null)
+            return "Введите пароль!";
 
-
+        return userDao.createNewUser(
+                User.builder()
+                        .name(userDto.getName())
+                        .email(userDto.getEmail())
+                        .password(userDto.getPassword())
+                        .build()
+        );
+    }
 }

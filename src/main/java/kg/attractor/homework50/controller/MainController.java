@@ -12,9 +12,9 @@ public class MainController {
     }
 
 
-    @RequestMapping("/main")
+    @RequestMapping("/regist")
     public String html2() {
-        return "main.html";
+        return "regist.html";
     }
 
 

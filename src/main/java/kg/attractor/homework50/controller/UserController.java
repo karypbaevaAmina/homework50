@@ -1,6 +1,7 @@
 package kg.attractor.homework50.controller;
 
 
+import kg.attractor.homework50.dto.UserDto;
 import kg.attractor.homework50.models.User;
 import kg.attractor.homework50.service.DBService;
 import kg.attractor.homework50.service.Lesson51Service;
@@ -17,6 +18,20 @@ import java.util.List;
 public class UserController {
     private final DBService dbService;
     private final Lesson51Service service;
+
+
+    @PostMapping
+    /* Регистрация отправляется в таком виде
+        {
+            "name": "Kim",
+            "email": "kkk@mail.ru",
+            "password": "5236"
+        }
+     */
+    public ResponseEntity<String> createNewUser(@RequestBody UserDto userDto) {
+        return new ResponseEntity<>(service.createNewUser(userDto), HttpStatus.OK);
+    }
+
 
     @GetMapping("/connect")
     public ResponseEntity<String> getConnection(){

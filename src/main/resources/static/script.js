@@ -17,10 +17,6 @@ function sendPost(event) {
     send("/post", formData);
 }
 
-function secury(val) {
-    return val+"===";
-}
-
 
 function send(path, formData) {
     axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
@@ -251,7 +247,7 @@ console.log(addPost(createPostElement(post)));
         });
     };
 
-
+///////////////////**************
 
 
 

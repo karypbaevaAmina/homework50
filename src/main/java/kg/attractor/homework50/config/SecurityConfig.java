@@ -33,20 +33,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter  {
 
         auth.jdbcAuthentication()
                 .dataSource(dataSource)
-                .usersByUsernameQuery("select email, password, enabled"
-                        + "from users "
-                        + "where email = ?")
-                .authoritiesByUsernameQuery("select u.username, a.authority " +
+                .usersByUsernameQuery("SELECT name, password, enabled " +
+                        "from users " +
+                        "where name = ?")
+                .authoritiesByUsernameQuery("SELECT u.email, a.authority " +
                         "from authorities a " +
-                        "inner join users u on a.user_id = u.id " +
-                        "where username = ?");
+                        "inner join users u on a.user = u.email" +
+                        "where email = ?");
     }
 
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers( HttpMethod.POST,"/post**/")
+                .antMatchers( HttpMethod.POST,"/post**/", "/comments/**", "/database**/" )
                 .fullyAuthenticated();
 
         http.authorizeRequests()
