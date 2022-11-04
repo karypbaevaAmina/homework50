@@ -27,44 +27,45 @@ public class UserController {
             "email": "kkk@mail.ru",
             "password": "5236"
         }
-     */
+    */
     public ResponseEntity<String> createNewUser(@RequestBody UserDto userDto) {
         return new ResponseEntity<>(service.createNewUser(userDto), HttpStatus.OK);
     }
 
 
-    @GetMapping("/connect")
-    public ResponseEntity<String> getConnection(){
-        return new ResponseEntity<>(dbService.openConnection(), HttpStatus.OK);
-
+    @GetMapping
+    public  ResponseEntity<User> user ( @RequestPart String name,  @RequestPart String password) {             //поиск по имени
+        return new ResponseEntity<>(service.getUsersByName(name, password), HttpStatus.OK);
     }
 
-    @GetMapping("/create")
-    public ResponseEntity<String> createTable(){
-        return new ResponseEntity<>(service.shouldCreateTable(), HttpStatus.OK);
-    }
-
-    @GetMapping("/select")
-    public  ResponseEntity<String> select(){
-        return  new ResponseEntity<>(service.shouldSelectData(), HttpStatus.OK);
-
-    }
-    @GetMapping("/users")
-    public  ResponseEntity<List<User>> users(){
-        return  new ResponseEntity<>(service.getlUsers(), HttpStatus.OK);
-
-    }
-
-    @GetMapping("/go/{name}")
-    public  ResponseEntity<User> go (@PathVariable String name) {             //поиск по имени
-        return new ResponseEntity<>(service.getUsersByName(name), HttpStatus.OK);
-    }
-
-
-    @GetMapping("/get/{email}")
-    public  ResponseEntity <User> getUserByEmail( @PathVariable String email) {
-        return new ResponseEntity<>(service.getUserByEmail(email), HttpStatus.OK);
-    }
+//    @GetMapping("/connect")
+//    public ResponseEntity<String> getConnection(){
+//        return new ResponseEntity<>(dbService.openConnection(), HttpStatus.OK);
+//
+//    }
+//
+//    @GetMapping("/create")
+//    public ResponseEntity<String> createTable(){
+//        return new ResponseEntity<>(service.shouldCreateTable(), HttpStatus.OK);
+//    }
+//
+//    @GetMapping("/select")
+//    public  ResponseEntity<String> select(){
+//        return  new ResponseEntity<>(service.shouldSelectData(), HttpStatus.OK);
+//
+//    }
+//    @GetMapping("/users")
+//    public  ResponseEntity<List<User>> users(){
+//        return  new ResponseEntity<>(service.getlUsers(), HttpStatus.OK);
+//
+//    }
+//
+//
+//
+//    @GetMapping("/get/{email}")
+//    public  ResponseEntity <User> getUserByEmail( @PathVariable String email) {
+//        return new ResponseEntity<>(service.getUserByEmail(email), HttpStatus.OK);
+//    }
 
 
 

@@ -7,31 +7,25 @@
     height: 50%;
     width: 60%;
     transform: translate(-50%, -50%);
-    background-color: rgba(0, 0, 0);
+
 
 }
 
 .btn-lg {
-    height: 20%;
-    margin-left: 40%;
-    margin-top: 18%;
-
-    color: rgb(92, 88, 88);
-
-    font-size: 45px;
+    background-color: black;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
 }
 
 .container {
     max-width: 1000px;
     margin: 0 auto;
     padding: 0 15px;
-}
-
-.container2{
-    max-width: 800px;
-    margin: 0  auto;
-    padding: 0 15px;
-
 }
 
 
@@ -52,7 +46,6 @@
     left:40%;
     background-color: transparent;
     border-color: silver;
-    position: fixed;
 
 }
 
@@ -72,20 +65,16 @@
 
 }
 
-.ul1 {
+ul {
     list-style-type: none;
 }
-.ul1 li {
+ul li {
     float: left;
 }
 
-ul{
-    list-style-type: none;
-}
+.book2{
+    padding-left: 430px;
 
-.book2 {
-    padding-left: 390px;
-    color: silver;
 }
 
 .muted1{
@@ -113,67 +102,29 @@ ul{
 .comment-1{
     margin-top: 30px;
     font-weight: bold;
+    margin-bottom: 50px;
+    padding-bottom: 30px;
+}
+.new-pub{
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+.pub{
+    margin: 0 auto;
+}
+.bod{
+    background-color: white;
 }
 
-/****************************************/
-body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
+
+.displayed{
+    width:650px;
+    height: 500px;
+    margin: 0 auto;
 }
-
-img.displayed {
-    display: block;
-    margin-left: auto;
-    margin-right: auto }
-
-#prompt-form {
-    display: inline-block;
-    padding: 5px 5px 5px 70px;
-    width: 200px;
-    border: 1px solid black;
-    background: white url(https://en.js.cx/clipart/prompt.png) no-repeat left 5px;
-    vertical-align: middle;
-}
-
-#prompt-form-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 9999;
-    display: none;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-}
-
-#prompt-form-container:before {
-    display: inline-block;
-    height: 100%;
-    content: '';
-    vertical-align: middle;
-}
-
-#cover-div {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 9000;
-    width: 100%;
-    height: 100%;
-    background-color: gray;
-    opacity: 0.3;
-}
-
-#prompt-form input[name="text"] {
-    display: block;
-    margin: 5px;
-    width: 180px;
-}
-
-new-pub{
-    margin-bottom: 30px;
+.container{
+    background-color: silver;
+    width: 750px ;
 }
 
 /***********************************регистрация*/
@@ -200,7 +151,7 @@ input[type=text]:focus, input[type=password]:focus {
 
 /* Установите стиль для всех кнопок */
 button {
-    background-color: #4CAF50;
+    background-color: black;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -208,6 +159,11 @@ button {
     cursor: pointer;
     width: 100%;
     opacity: 0.9;
+}
+
+.color{
+
+    background-color: #474e5d;
 }
 
 button:hover {
@@ -287,4 +243,10 @@ hr {
     .cancelbtn, .signupbtn {
         width: 100%;
     }
+}
+
+.header{
+     padding-bottom: 30px;
+    padding-top: 20px;
+     background-color: #474e5d;
 }

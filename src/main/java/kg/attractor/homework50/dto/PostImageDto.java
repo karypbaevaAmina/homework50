@@ -1,10 +1,7 @@
 package kg.attractor.homework50.dto;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 import org.springframework.web.multipart.MultipartFile;
-
-import java.time.LocalDateTime;
 
 @Data
 @Builder

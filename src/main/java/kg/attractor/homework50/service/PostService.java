@@ -1,17 +1,13 @@
 package kg.attractor.homework50.service;
 
 import kg.attractor.homework50.dao.PostDao;
+import kg.attractor.homework50.dto.PostDto;
 import kg.attractor.homework50.dto.PostImageDto;
 import kg.attractor.homework50.models.Post;
 import lombok.RequiredArgsConstructor;
-import org.springframework.core.io.ByteArrayResource;
-import org.springframework.core.io.Resource;
-import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-import org.webjars.NotFoundException;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -39,8 +35,10 @@ public class PostService {
     }
 
 
-    public Post findPost (String email){
-        return postDao.getPostByUser(email);
+    public List<PostDto> findAll(){
+        var postList = postDao.findAll();
+   return postList.stream().map(PostDto::from).collect(Collectors.toList());
+
     }
 
 

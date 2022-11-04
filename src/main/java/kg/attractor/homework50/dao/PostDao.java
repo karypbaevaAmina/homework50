@@ -17,10 +17,7 @@ import java.util.Optional;
 @AllArgsConstructor
 public class PostDao {
 
-
-
     private final JdbcTemplate jdbcTemplate;
-
 
 
     public Post deletePost(int id) {
@@ -38,10 +35,10 @@ public class PostDao {
 
 
 
-    public List<PostImageDto> findAll() {
+    public List<PostDto> findAll() {
         String sql5 = "select * " +
                 "from post_image ";
-        return (List<PostImageDto>) jdbcTemplate.queryForObject(sql5, new BeanPropertyRowMapper<>(PostImageDto.class));
+        return jdbcTemplate.query(sql5, new BeanPropertyRowMapper<>(PostDto.class));
     }
 
 

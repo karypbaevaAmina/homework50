@@ -11,9 +11,10 @@
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="styles.css">
 </head>
+<div class="header"><p id="info"></p></div>
 <body class="bod">
-
-<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;"> Регистрация </button>
+<!--<div class=" color"> <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;"> Регистрация </button>-->
+<!--</div>-->
 
 <div id="id01" class="modal">
     <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Закрыть Modal">&times;</span>
@@ -40,27 +41,64 @@
 </div>
 
 
-<div id="base" class="container like">
-    <form id="post-form" class="container2">
-        <div class="card" style="width: 18rem;">
-            <div class="card-header">
-                Добавление нового поста:
+<div id="id02" class="modal">
+    <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Закрыть Modal">&times;</span>
+    <form id="comment-form" class="modal-content" >
+        <div class="container">
+            <hr>
+            <label><b>Оставьте комментарий</b></label>
+            <input type="text" placeholder="Текст комментария" name="text">
+
+            <div class="clearfix">
+                <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Отменить</button>
+                <button type="submit" class="sign">ОК</button>
             </div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item"> <input type="file" name="image"/></li>
-                <li class="list-group-item"> <textarea class="text"  name="description" placeholder="Описание поста"></textarea></li>
-                <li class="list-group-item"> <button type="submit" class="btn btn-secondary">Отправить</button></li>
-            </ul>
+        </div>
+    </form>
+</div>
+
+<form id="post-form" class="container">
+    <div class="card" style="width: 18rem;">
+        <div class="card-header">
+            Добавление нового поста:
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"> <input type="file" name="image"/></li>
+            <li class="list-group-item"> <textarea class="text"  name="description" placeholder="Описание поста"></textarea></li>
+            <li class="list-group-item"> <button type="submit" class="btn btn-secondary">Отправить</button></li>
+            <li class="list-group-item"> <button  id="get_post" class="btn btn-secondary">Посты</button></li>
+
+
+        </ul>
+    </div>
+</form>
+
+
+<div id="base" class="container like">
+    <div class="card post active post1"> Posts: </div>
+</div>
+<div class="splash">
+    <form id="login-form" class="modal-content" >
+        <div class="container">
+            <hr>
+            <label><b>Авторизуйтесь</b></label>
+            <input type="text" placeholder=" Ведите Имя" name="name">
+            <input type="password" placeholder=" Ведите пароль" name="password" required>
+            <button type="submit"  class="btn btn-secondary btn-lg ">Войти</button>
+            <div><button onclick="document.getElementById('id01').style.display='block'" style="width:auto;"> Регистрация </button>
+            </div>
+
         </div>
     </form>
 
-    <div class="card post active post1"> Posts: </div>
+</div>
+
 <!--    <div class="card active">Comments:</div>-->
 
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script language="JavaScript" src="script.js"></script>
-</div>
+
 </body>
 </html>
 

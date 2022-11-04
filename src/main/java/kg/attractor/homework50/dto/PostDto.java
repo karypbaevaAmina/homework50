@@ -14,10 +14,18 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 
 public class PostDto {
-   private int id;
+    public static PostDto from(PostDto post) {
+
+        return builder()
+                .id(post.getId())
+                .image(post.getImage())
+                .description(post.getDescription())
+                .build();
+    }
+
+    private int id;
     private String image;
     private String description;
-
 
     public PostDto(String image, String description) {
         this.image = image;

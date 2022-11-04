@@ -39,14 +39,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter  {
                 .authoritiesByUsernameQuery("SELECT u.email, a.authority " +
                         "from authorities a " +
                         "inner join users u on a.user = u.email" +
-                        "where email = ?");
+                        "where u email = ?");
     }
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers( HttpMethod.POST,"/post**/", "/comments/**", "/database**/" )
+                .antMatchers( HttpMethod.POST,"/post**/", "/comments/**" )
                 .fullyAuthenticated();
-
         http.authorizeRequests()
                 .anyRequest()
                 .permitAll();

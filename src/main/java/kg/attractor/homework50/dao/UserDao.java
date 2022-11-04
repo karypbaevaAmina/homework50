@@ -54,12 +54,12 @@ public class UserDao {
         return false;
     }
 
-    private void createAuthority(String name) {
-        var user = getByName(name);
-        String query = "INSERT INTO authorities(user, authority)" +
-                "VALUES(?, 'ROLE_USER')";
-        jdbcTemplate.update(query, user);
-    }
+//    private void createAuthority(String name) {
+//        var user = getByName(name);
+//        String query = "INSERT INTO authorities(user, authority)" +
+//                "VALUES(?, 'ROLE_USER')";
+//        jdbcTemplate.update(query, user);
+//    }
 
 
 
@@ -76,11 +76,11 @@ public class UserDao {
     }
 
 
-    public User getByName(String name) {
-        String sql3 = "select email\n" +
+    public User getByName(String name, String password) {
+        String sko = "select email\n" +
                 "from users\n" +
-                "where name =?; ";
-        return jdbcTemplate.queryForObject(sql3, new BeanPropertyRowMapper<>(User.class), name);
+                "where name= ?, password =?; ";
+        return jdbcTemplate.queryForObject(sko, new BeanPropertyRowMapper<>(User.class), name, password);
     }
 
 

@@ -1,7 +1,7 @@
 package kg.attractor.homework50.controller;
 
 import kg.attractor.homework50.dao.PostDao;
-import kg.attractor.homework50.dto.PostImageDto;
+import kg.attractor.homework50.dto.PostDto;
 import kg.attractor.homework50.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
+import java.util.List;
 
 @RestController
 @RequestMapping("/post")
@@ -33,6 +33,13 @@ public class PostController {
 //    }
     ////////********************************************/////////////
 
+    @GetMapping("/all")
+    public List<PostDto> findAllPosts(){
+       List<PostDto> posts = postService.findAll();
+       return posts;
+    }
+
+
     @PostMapping
 
     /* Пост отправляется в виде form_data
@@ -47,11 +54,11 @@ public class PostController {
     }
 
 
-
     @PostMapping("/post/{image}")
     public ResponseEntity<?> getImageDetails(@PathVariable (value = "image") String image) {
         return new ResponseEntity<>(postDao.findByName(image), HttpStatus.OK);
 
     }
+
 
 }
